@@ -17,7 +17,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :production do
