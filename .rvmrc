@@ -1,0 +1,5 @@
+rvm ruby-2.0.0-p353@commit-crap --create
+
+if ! command -v bundle ; then
+  gem install bundler
+fi
