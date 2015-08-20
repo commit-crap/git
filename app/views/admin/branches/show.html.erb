@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @team.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @team.status %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @team.icon %>
+</p>
+
+<%= link_to 'Edit', edit_admin_team_path(@team) if can? :update, Team %> |
+<%= link_to 'Back', admin_teams_path %>
