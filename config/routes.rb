@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  namespace :admin do
+  namespace :admin, shallow: true  do
+    resources :branch
   end
 
   scope module: :site do
