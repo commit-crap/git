@@ -5,6 +5,5 @@ Rails.application.routes.draw do
     resources :branch
   end
 
-  scope module: :site do
-  end
+  root 'sites#index'
 end
