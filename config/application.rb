@@ -9,7 +9,7 @@ module CommitCrap
     config.time_zone = 'Brasilia'
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :"pt-BR"
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

@@ -1,0 +1,103 @@
+"pt-BR":
+  title: "Bolão 2015"
+  version: "Beta 0.8"
+  match:
+    head_title: "Partidas"
+    head_title_users: "Palpites dos participantes"
+    list:
+      match: "Partida"
+      place: "Local"
+      occurs: "Data"
+      points: "Pontos"
+    label:
+      team_home: "Time em casa"
+      team_home_goals: "Gols"
+      team_away: "Time visitante"
+      team_away_goals: "Gols"
+      place: "Local"
+      occurs: "Data"
+      round: "Rodada"
+    action:
+      back: "Voltar para lista"
+      round_back: "Voltar para %{round_name}"
+      save: "Salvar palpites"
+    message:
+      not_found: "Partida não encontrada."
+  team:
+    head_title: "Times"
+    list:
+      name: "Nome"
+    label:
+      description: "Descrição"
+      status: "Status"
+      icon: "Ícone"
+    action:
+      show: "Ver time"
+      back: "Voltar para lista"
+    message:
+      not_found: "Time não encontrado."
+  round:
+    head_title: "Rodadas"
+    list:
+      name: "Rodada"
+      period: "Período"
+      points: "Pontos"
+    label:
+      status: "Status"
+      tournament: "Campeonato"
+    action:
+      show: "Ver time"
+      tournament_back: "Voltar para %{tournament_name}"
+      back: "Voltar para lista"
+      matches: "Ver partidas"
+      users: "Acompanhar partipantes"
+    message:
+      not_found: "Rodada não encontrada."
+  rule:
+    head_title: "Regulamento"
+    message:
+      not_found: "Regulamento não encontrado."
+  tournament:
+    head_title: "Campeonatos"
+    title: "Campeonato"
+    label:
+      title: "Título"
+      description: "Descrição"
+      status: "Status"
+    action:
+      back: "Voltar"
+      join: "Participar deste campeonato"
+      classification:
+        title: "Classificação"
+        general: "Geral"
+        round: "Por rodada"
+        period: "Por período"
+      disjoin:
+        message: "Sair deste campeonato"
+        confirm: "Deseja realmente sair deste campeonato?"
+      rounds: "Ver rodadas"
+    message:
+      join: "Parabéns, agora você está participando do campeonato."
+      disjoin: "Você não está mais participando do campeonato."
+      not_join: "Você ainda não está participando no campeonato informado."
+      not_found: "Campeonato não encontrado."
+  bet:
+    message:
+      repeat_limit_exceded: "O número de resultados iguais nesta rodada foi excedido."
+      not_editable: "Esta partida não permite palpites no momento."
+  classification:
+    action:
+      go_back: "Voltar para %{tournament_name}"
+    general:
+      head_title: "Classificação Geral"
+      label_user: "Paticipante"
+      label_point: "Pontos"
+    period:
+      head_title: "Classificação por Período"
+      label_user: "Paticipante"
+      label_total: "Total"
+    round:
+      head_title: "Classificação por Rodada"
+      label_user: "Paticipante"
+      label_rounds: "Rodadas"
+      label_total: "Total"
