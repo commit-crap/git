@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   layout :layout_by_resource
@@ -10,6 +11,16 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
+  end
+
+  def not_found(message = 'Not found')
+    raise ActionController::RoutingError.new(message)
+  end
+
+  def check_admin_role
+    unless current_user.admin?
+      raise ActionController::RoutingError.new('not allowed')
+    end
   end
 
   protected

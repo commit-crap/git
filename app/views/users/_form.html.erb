@@ -57,6 +57,17 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-4">
+      <span class="ls-label-text"><%= f.label :role_id, "Role" %></span>
+        <div class="ls-custom-select">
+          <%= f.collection_select(:role_id, Role.all, :id, :name, class: "ls-state ls-select") %>
+        </div>
+      </label>
+    </div>
+  </div> 
+
 </fieldset>
 
 <div class="ls-actions-btn">
