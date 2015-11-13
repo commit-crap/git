@@ -4,7 +4,7 @@
       <li class="ls-submenu">
         <a class="ls-ico-cog" href="">  Configurações </a>
         <ul>
-          <%= link_to 'Cadastro de Usuário', users_path, class: "ls-ico-user-add" %>
+          <%= link_to 'Cadastro de Usuário', users_path, class: "ls-ico-user-add" if can? :manage, User %>
         </ul>
       </li>
     </ul>
