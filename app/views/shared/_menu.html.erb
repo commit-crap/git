@@ -6,6 +6,9 @@
         <ul>
           <%= link_to 'Cadastro de Usuário', users_path, class: "ls-ico-user-add" if can? :manage, User %>
         </ul>
+        <ul>
+          <%= link_to 'Cadastro de Role', roles_path, class: "ls-ico-flag" if can? :manage, Role %>
+        </ul>
       </li>
     </ul>
   </nav>
