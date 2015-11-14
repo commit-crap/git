@@ -1,0 +1,79 @@
+<%= form_for(@user, html: { class: "ls-form row" }) do |f| %>
+
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<fieldset>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :name, "Nome" %></span>
+        <%= f.text_field :name, autofocus: true %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :email, "Email" %></span>
+        <%= f.email_field :email %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :password, "Senha" %></span>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :password_confirmation, "Confirmação de Senha" %></span>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-4">
+      <span class="ls-label-text"><%= f.label :role_id, "Role" %></span>
+        <div class="ls-custom-select">
+          <%= f.collection_select(:role_id, Role.all, :id, :name, class: "ls-state ls-select") %>
+        </div>
+      </label>
+    </div>
+  </div> 
+
+</fieldset>
+
+<div class="ls-actions-btn">
+  <%= f.button  "Salvar", :type => "submit" , class: "ls-btn-primary"%>
+  <%= f.submit "Limpar", :type => "reset",  class: "ls-btn-primary" %>
+  <%= link_to 'Voltar', users_path, class: "ls-btn-darker" %>
+</div>
+
+<% end %>
