@@ -3,26 +3,27 @@
 <a><%= link_to 'Cadastrar Usuário', new_user_path(@users) , class: "ls-btn-primary" %></a>
 
 <div class="ls-box-filter">
-  <form method="get" accept-charset="UTF-8" action="/hospitals/search" id="new_customer_search" class="ls-form ls-form-inline" novalidate="novalidate"><input type="hidden" value="✓" name="utf8">
+  <%= form_for :search, url: search_users_path, method: :get, class: "ls-form ls-form-inline" do |f| %>
     <label class="ls-label col-md-4">
       <b class="ls-label-text">Buscar por:</b>
       <div class="ls-custom-select">
-        <select name="" class="ls-select">
-          <option>Usuário</option>
-          <option>Email</option>
-        </select>
+        <%= f.select(:type) do %>
+          <% [['Usuário', 'name'], ['Email', 'email']].each do |c| %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
       </div>
     </label>
 
     <label role="search" class="ls-label col-md-4">
       <div>
-        <input type="text" class="ls-field">
+        <%= f.text_field :text, class: 'ls-field' %>
       </div>
     </label>
     <label class="ls-label ">
-      <input type="submit" class="ls-btn" value="Buscar" name="commit" aria-expanded="false" role="combobox">
+      <%= submit_tag('Buscar', class: "ls-btn") %>
     </label>
-  </form>
+  <% end %>
 </div>
 
 <table class="ls-table ls-table-striped">

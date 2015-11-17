@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users ||= User.all
   end
 
   # GET /users/new
@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def search
+    @users = ::User::FinderService.find(search_params)
+    render action: 'index'
   end
 
   # PATCH/PUT /users/1
@@ -63,6 +68,10 @@ class UsersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_id)
+    end
+
+    def search_params
+      params.require(:search).permit(:type, :text)
     end
 
     def user_params_without_password
