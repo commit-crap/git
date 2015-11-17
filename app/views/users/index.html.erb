@@ -3,27 +3,26 @@
 <a><%= link_to 'Cadastrar Usuário', new_user_path(@users) , class: "ls-btn-primary" %></a>
 
 <div class="ls-box-filter">
-  <%= form_for :search, url: search_users_path, method: :get, class: "ls-form ls-form-inline" do |f| %>
-    <label class="ls-label col-md-4">
-      <b class="ls-label-text">Buscar por:</b>
-      <div class="ls-custom-select">
-        <%= f.select(:type) do %>
-          <% [['Usuário', 'name'], ['Email', 'email']].each do |c| %>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
+  <%= form_for :search, url: search_users_path, html: { :class => "ls-form ls-form-inline", method: :get } do |f| %>
+  <label class="ls-label col-md-4">
+    <b class="ls-label-text">Buscar por:</b>
+    <div class="ls-custom-select">
+      <%= f.select(:type, {prompt: false}, class: "ls-select") do %>
+        <% [['Usuário', 'name'], ['Email', 'email']].each do |c| %>
+          <%= content_tag(:option, c.first, value: c.last) %>
         <% end %>
-      </div>
-    </label>
+      <% end %>
+    </div>
+  </label>
 
-    <label role="search" class="ls-label col-md-4">
-      <div>
-        <%= f.text_field :text, class: 'ls-field' %>
-      </div>
-    </label>
-    <label class="ls-label ">
-      <%= submit_tag('Buscar', class: "ls-btn") %>
-    </label>
-  <% end %>
+  <label class="ls-label col-md-4" role="search" id="text_order_search">
+    <%= f.text_field :text, class: 'ls-field' %>
+  </label>
+
+  <label class="ls-label ">
+    <%= submit_tag('Buscar', class: "ls-btn") %>
+  </label>
+  <%end%>
 </div>
 
 <table class="ls-table ls-table-striped">
@@ -58,7 +57,7 @@
   </ul>
 
   <div class="ls-filter-view">
-      Exibir
+    Exibir
     <div class="ls-custom-select">
       <select name="" id="" class="ls-select">
         <option value="10">10</option>
@@ -67,6 +66,6 @@
         <option value="100">100</option>
       </select>
     </div>
-      ítens por página
+    ítens por página
   </div>
 </div>
