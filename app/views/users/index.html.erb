@@ -45,27 +45,18 @@
   </tbody>
 </table>
 
+<% if @users %>
 <div class="ls-pagination-filter">
-  <ul class="ls-pagination">
-    <li class="ls-disabled"><a href="#">&laquo; Anterior</a></li>
-    <li class="ls-active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">Próximo &raquo;</a></li>
-  </ul>
+  <%= paginate @users if @users %>
 
+  <% if not @users.blank? %>
   <div class="ls-filter-view">
-    Exibir
+    <%= t 'helpers.show' %>
     <div class="ls-custom-select">
-      <select name="" id="" class="ls-select">
-        <option value="10">10</option>
-        <option value="30">30</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+      <%= select_tag(:per_page_options, options_for_select(options_for_per_page, params[:per_page]))%>
     </div>
-    ítens por página
+    <%= t 'helpers.per_page' %>
   </div>
+  <% end %>
 </div>
+<% end %>
