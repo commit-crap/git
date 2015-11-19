@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  WillPaginate.per_page = 10
+  WillPaginate.per_page = 1
 
   def per_page
     params[:per_page] if params[:per_page].present?

@@ -5,6 +5,6 @@ module ApplicationHelper
   end
 
   def options_for_per_page
-    [10, 30, 50, 100]
+    [1, 2, 3, 5, 100]
   end
 end
