@@ -1,0 +1,63 @@
+<%= form_for(@repository, html: { class: "ls-form row" }) do |f| %>
+
+<% if @repository.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@repository.errors.count, "error") %> prohibited this repository from being saved:</h2>
+
+  <ul>
+    <% @repository.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<fieldset>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :name, "Nome" %></span>
+        <%= f.text_field :name, autofocus: true %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :description, "Descrição" %></span>
+        <%= f.text_field :description %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <%= label_tag :visibility, "Publico" %>
+        <%= radio_button_tag(:visibility, "publico") %>
+        <%= label_tag :visibility, "Privado" %>
+        <%= radio_button_tag(:visibility, "privado") %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <label class="ls-label col-md-8">
+        <span class="ls-label-text"><%= f.label :status, "Status" %></span>
+        <%= f.text_field :status %>
+      </label>
+    </div>
+  </div>
+
+</fieldset>
+
+<div class="ls-actions-btn">
+  <%= f.button  "Salvar", :type => "submit" , class: "ls-btn-primary"%>
+  <%= f.submit "Limpar", :type => "reset",  class: "ls-btn-primary" %>
+  <%= link_to 'Voltar', repositories_path, class: "ls-btn-darker" %>
+</div>
+
+<% end %>
