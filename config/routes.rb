@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   resources :repositories
   resources :roles
   devise_for :users
@@ -9,6 +11,4 @@ Rails.application.routes.draw do
   namespace :admin, shallow: true  do
     resources :branch
   end
-
-  root 'sites#index'
 end
