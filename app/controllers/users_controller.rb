@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users ||= User.all
+    @users = make_paginate(@users)
   end
 
   # GET /users/new
@@ -29,6 +30,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = ::User::FinderService.find(search_params)
+    @users = make_paginate(@users)
+    render action: 'index'
+  end
+
   # PATCH/PUT /users/1
   def update
     if user_params[:password].blank?
@@ -48,27 +55,33 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
   def destroy
     @user.destroy
     redirect_to users_url, notice: 'Usuário excluído.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_id)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params_without_password
-      user_params.delete(:password)
-      user_params.delete(:password_confirmation)
-      user_params
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_id)
+  end
 
+  def search_params
+    params.require(:search).permit(:type, :text)
+  end
+
+  def user_params_without_password
+    user_params.delete(:password)
+    user_params.delete(:password_confirmation)
+    user_params
+  end
+
+  def make_paginate(list)
+    per_page = params[:per_page] if params[:per_page].present?
+    list.paginate(page: params[:page], per_page: per_page)
+  end
 end

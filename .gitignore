@@ -17,6 +17,7 @@
 !/log/.keep
 /tmp
 /coverage
+*.swp
 
 .DS_Store
 rubocop.html
