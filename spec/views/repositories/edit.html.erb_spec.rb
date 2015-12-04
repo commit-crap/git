@@ -13,7 +13,6 @@ RSpec.describe "repositories/edit", type: :view do
   end
 
   it "renders the edit repository form" do
-    binding.pry
     render
     assert_select "form[action=?][method=?]", repository_path(@repository), "post" do
       assert_select "input#repository_name[name=?]", "repository[name]"
